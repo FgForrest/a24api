@@ -51,6 +51,7 @@ sub jsonDecode($) {
 sub parseCfg($) {
     my ($fn) = @_;
     my $s = "";
+    err("Configuration file not found: %s", $fn) if (!-f $fn);
     foreach my $l (split /[\r\n]+/, `cat "$fn"`) {
         next if ($l =~ /^\s*\/\//);  ## skip JS comment lines
         next if ($l =~ /^\s*#/);  ## skip SHELL comment lines
