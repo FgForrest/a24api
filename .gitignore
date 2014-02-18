@@ -1,6 +1,9 @@
 *~
 .idea
 *.tmp
+
+## !! passwords are here !!!
 a24api-cfg.json
 
-mpe-*.sh
+## batch scripts using the API
+batch_scripts
