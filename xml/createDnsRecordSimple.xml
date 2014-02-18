@@ -1,0 +1,14 @@
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.rex" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:addDnsRecord soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <record xsi:type="rec:DnsRecord__PARAM__type__" xmlns:rec="http://centrum.active24.cz/services/">
+            <name xsi:type="soapenc:string">__PARAM__name__</name>
+            <ttl xsi:type="xsd:int">__PARAM__ttl__</ttl>
+            <type xsi:type="soapenc:string">__PARAM__type__</type>
+            <__PARAM__variable__ xsi:type="__PARAM__vartype__">__PARAM__value__</__PARAM__variable__>
+         </record>
+         <domain xsi:type="soapenc:string">__PARAM__domain__</domain>
+      </web:addDnsRecord>
+   </soapenv:Body>
+</soapenv:Envelope>

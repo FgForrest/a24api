@@ -1,0 +1,17 @@
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.rex" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:updateDnsRecord soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <record xsi:type="rec:DnsRecord" xmlns:rec="http://record.dns.serviceprovider.active24.cz">
+            <from xsi:type="xsd:dateTime">?</from>
+            <id xsi:type="xsd:int">?</id>
+            <name xsi:type="soapenc:string">?</name>
+            <to xsi:type="xsd:dateTime">?</to>
+            <ttl xsi:type="xsd:int">?</ttl>
+            <type xsi:type="soapenc:string">?</type>
+            <value xsi:type="ser:ArrayOf_xsd_anyType" soapenc:arrayType="xsd:anyType[]" xmlns:ser="http://centrum.active24.cz/services/"/>
+         </record>
+         <domain xsi:type="soapenc:string">?</domain>
+      </web:updateDnsRecord>
+   </soapenv:Body>
+</soapenv:Envelope>

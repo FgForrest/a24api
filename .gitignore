@@ -1,0 +1,6 @@
+*~
+.idea
+*.tmp
+a24api-cfg.json
+
+mpe-*.sh

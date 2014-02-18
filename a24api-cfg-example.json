@@ -1,0 +1,14 @@
+{
+    // SOAP WS parameters
+    "api_url" : "https://centrum.active24.cz/services/a24PartnerService",
+    "api_username" : "-- your username goes here --",
+    "api_password" : "-- your password goes here --",
+
+    // file to store a cookie used to keep SOAP API session
+    "cookie_file" : "./cookie.tmp",
+    // SOAP API session timeout, new session is automatically established after expiration
+    "api_session_timeout_sec" : 60,
+
+    // increase the debug level to get debugging messages
+    "debug_level" : 0
+}

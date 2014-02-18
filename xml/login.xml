@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.rex">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <web:login soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <userName xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">__PARAM__username__</userName>
+         <userPassword xsi:type="soapenc:string" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">__PARAM__password__</userPassword>
+      </web:login>
+   </soapenv:Body>
+</soapenv:Envelope>
