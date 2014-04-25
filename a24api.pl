@@ -134,7 +134,7 @@ sub getDnsRecords($$$$) {
 			if ($v =~ /$rev/i) { $filt = 1; last; } ## filter value
 		}
 		next if (! $filt);
-		msg(0, "%s %8s %-30s %6s %-5s %s", $domain, $r->{"id"}, $r->{"name"}, $r->{"ttl"}, $r->{"type"}, join(" ", @{$r->{"value"}}));
+		msg(0, "%-30s %8s %-30s %6s %-5s %s", $domain, $r->{"id"}, $r->{"name"}, $r->{"ttl"}, $r->{"type"}, join(" ", @{$r->{"value"}}));
 	}
 }
 
