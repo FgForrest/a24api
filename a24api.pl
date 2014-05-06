@@ -9,7 +9,7 @@ $|=1;
 ############################################################################
 
 my $CFG = {};
-my $CFG_FILE = "./a24api-cfg.json";
+my $OPT = {};
 
 ############################################################################
 
@@ -73,7 +73,7 @@ sub apiCallRaw($$$) {
 
 	dbg(1, "API CALL - %s / %s", $method, $variant);
 	dbg(2, "REQUEST - %s", $rq);
-	my $rs = `curl -s -b "$CFG->{cookie_file}" -c "$CFG->{cookie_file}" -X POST -H "Content-Type: text/xml" -H "SOAPAction: \"$method\"" -d '$rq' $CFG->{api_url}`;
+	my $rs = `curl -s -b "$OPT->{cookie_file}" -c "$OPT->{cookie_file}" -X POST -H "Content-Type: text/xml" -H "SOAPAction: \"$method\"" -d '$rq' $CFG->{api_url}`;
 
 	my $soap;
 	eval { $soap = SOAP::Deserializer->new->deserialize($rs); };
@@ -104,7 +104,7 @@ sub apiCallRaw($$$) {
 sub apiCall($$$) {
 	my ($method, $variant, $params) = @_;
 
-	my $mt = (stat($CFG->{cookie_file}))[9];
+	my $mt = (stat($OPT->{cookie_file}))[9];
 	my $now = time();
 	if ($mt eq "" or $mt + $CFG->{api_session_timeout_sec} < $now) {
 		apiCallRaw("login", "login", { username => $CFG->{api_username}, password => $CFG->{api_password} });
@@ -181,8 +181,11 @@ sub deleteDnsRecord($$) {
 
 sub help() {
 	print <<_EOF;
-Usage: $0 <service> <function> [parameters]
+Usage: $0 [options] <service> <function> [parameters]
 
+Options:
+    -c <variant> Use alternative cfg. file a24api-cfg-<variant>.json
+                 If omitted, cfg. file a24api-cfg-default.json is used.
 Services:
 	dns - DNS record management
 		dns list <domain> [-t <type>] [-fn <name regex filter>] [-fv <value regex filter>]
@@ -244,7 +247,22 @@ sub main() {
 
 ############################################################################
 
+my $CFG_VARIANT="default";
+
+while ($ARGV[0] =~ /^-.*$/) {
+    my $o = shift(@ARGV);
+    if ($o eq "-c") {
+        $CFG_VARIANT = shift(@ARGV);
+    } else {
+        err("Unsupported option: %s", $o);
+    }
+}
+
 my $WD=`dirname $0`; chomp($WD); chdir($WD) or err("Can't change directory to: $WD");
-$CFG = parseCfg($CFG_FILE);
+my $WD=`pwd`; chomp($WD); chdir($WD) or err("Can't change directory to: $WD");
+
+$OPT->{cookie_file} = "$WD/cookie-$CFG_VARIANT.tmp";
+$CFG = parseCfg("$WD/a24api-cfg-$CFG_VARIANT.json");
 main();
+
 exit(0);
