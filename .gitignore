@@ -3,7 +3,7 @@
 *.tmp
 
 ## !! passwords are here !!!
-a24api-cfg.json
+a24api-cfg-*.json
 
 ## batch scripts using the API
 batch_scripts
