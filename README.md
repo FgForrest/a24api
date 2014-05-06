@@ -7,8 +7,11 @@ Access to Active24 SOAP API
 Usage
 -----
 
-    Usage: ./a24api.pl <service> <function> [parameters]
+    Usage: ./a24api.pl [options] <service> <function> [parameters]
 
+    Options:
+        -c <variant> Use alternative cfg. file a24api-cfg-<variant>.json
+                     If omitted, cfg. file a24api-cfg-default.json is used.
     Services:
         dns - DNS record management
             dns list <domain> [-t <type>] [-fn <name regex filter>] [-fv <value regex filter>]
