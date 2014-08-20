@@ -23,3 +23,19 @@ Usage
             MX
                 dns create <domain> <name> <ttl> <type> <priority> <value>
                 dns update <domain> <record id> <name> <ttl> <type> <priority> <value>
+
+Prerequisites
+-------------
+
+Script uses Perl libraries:
+
+* Getopt::Long
+* Data::Dumper
+* SOAP::Lite
+* JSON
+
+Install corresponding OS packages.
+
+### Ubuntu
+  
+    aptitude install libjson-perl libsoap-lite-perl
