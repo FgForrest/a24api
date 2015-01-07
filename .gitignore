@@ -7,7 +7,6 @@ a24api-cfg-*.json
 
 ## env. file, batch scripts using the API
 batch_scripts
-.env
 
 ## backup files
 backup
