@@ -5,8 +5,9 @@
 ## !! passwords are here !!!
 a24api-cfg-*.json
 
-## batch scripts using the API
+## env. file, batch scripts using the API
 batch_scripts
+.env
 
 ## backup files
 backup
